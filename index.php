@@ -22,7 +22,7 @@
 		</button>
 
 		<div class="mdl-card__media mdl-color--white mdl-color-text--grey-600">
-			<img src="images/logo.png">
+			<img src="<?php echo get_site_url(); ?>/wp-content/themes/fbi-safe/images/logo.png">
 			+1,337
 		</div>
 
@@ -109,3 +109,5 @@
 		</a>
 	</nav>
 </div>
+
+<?php get_footer(); ?>
