@@ -45,23 +45,43 @@
 		</div>
 	</div>
 
-	<div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
-		<div class="mdl-card__media mdl-color-text--grey-50">
-			<h3><a href="entry.html">On the road again</a></h3>
-		</div>
+	<!-- WORDPRESS LIST POSTS ARGS -->
+	<?php 
+		$args = array(
+			'posts_per_page'   => 5,
+			'offset'           => 0,
+			'orderby'          => 'date',
+			'order'            => 'DESC',
+			'post_type'        => 'post',
+			'post_status'      => 'publish',
+			'suppress_filters' => true 
+		);
 
-		<div class="mdl-color-text--grey-600 mdl-card__supporting-text">
-			Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
-		</div>
+		$posts = get_posts( $args );
+	?>
 
-		<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-			<div class="minilogo"></div>
-			<div>
-				<strong>The Newist</strong>
-				<span>2 days ago</span>
+	<!-- WORDPRESS LIST POSTS -->
+	<?php  foreach ($posts as $post) : setup_postdata( $post ); ?>
+		<div class="mdl-card on-the-road-again mdl-cell mdl-cell--12-col">
+			<div class="mdl-card__media mdl-color-text--grey-50">
+				<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+			</div>
+			
+			<div class="mdl-color-text--grey-600 mdl-card__supporting-text">
+				<?php the_content(); ?>
+			</div>
+
+			<div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
+				<?php echo get_avatar( get_the_author_meta('id'), 32 ); ?>
+
+				<div>
+					<strong><?php the_author(); ?></strong>
+					<span><?php the_date(); ?></span>
+				</div>
 			</div>
 		</div>
-	</div>
+	<?php endforeach; ?>
+	
 
 	<div class="mdl-card amazing mdl-cell mdl-cell--12-col">
 		<div class="mdl-card__title mdl-color-text--grey-50">
