@@ -81,7 +81,6 @@
 			</div>
 		</div>
 	<?php endforeach; ?>
-	
 
 	<div class="mdl-card amazing mdl-cell mdl-cell--12-col">
 		<div class="mdl-card__title mdl-color-text--grey-50">
